@@ -1,27 +1,23 @@
 # Kubernetes CKA Example Environments
+This is based on 
+https://levelup.gitconnected.com/kubernetes-cka-example-questions-practical-challenge-86318d85b4d for setting up local cluster
+
+# Updates:
+Base repo is updated for below 
+
+- Updated for kubernetes 1.19.1
+- Added containerd as container runtime
+- Updated scripts 
 
 ## challenges:
 
-https://levelup.gitconnected.com/kubernetes-cka-example-questions-practical-challenge-86318d85b4d?source=friends_link&sk=cb63eb0edd1210851f01df24b2142db2
-
 
 ## setup and run
-You will start a two node cluster on your machine, one master and one worker. For this you need to install VirtualBox and vagrant, then:
-
-
-```
-git clone git@github.com:wuestkamp/cka-example-environments.git
-cd cka-example-environments/cluster1
+You will start a two node cluster on your machine, one master and one worker.
+For this you need to install VirtualBox and vagrant, then: go to relative cluster i.e. docker based or containerd based and boot up
 ./up.sh
 
-vagrant ssh cluster1-master1
-vagrant@cluster1-master1:~$ sudo -i
-root@cluster1-master1:~# kubectl get node
-```
-
-You should be connected as `root@cluster1-master1`. You can connect to other worker nodes using root, like ssh `root@cluster1-worker1`
-If you want to destroy the environment again run `./down.sh`. You should destroy the environment after usage so no more resources are used!
+## save the state
+vagrant suspend
 
 
-# more
-More challenges in a completely simulated CKA environment on https:/killer.sh
