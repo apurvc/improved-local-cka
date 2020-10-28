@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#vagrant up --provider virtualbox
+vagrant up 
+
+echo '######################## WAITING TILL ALL NODES ARE READY ########################'
+sleep 60
+
+echo '######################## INITIALISING K8S RESOURCES ########################'
+chmod 400 certs/id_rsa
+vagrant ssh controlplane -c "sudo su - root -c 'kubectl apply -f /vagrant/k8s/init.yaml'"
+vagrant ssh controlplane -c "mkdir -p .kube ; sudo cp /root/.kube/config ./.kube/config ; sudo chown vagrant:vagrant .kube/config"
+sleep 20
+
+echo '######################## ALL DONE ########################'
